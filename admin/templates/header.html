@@ -5,13 +5,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="author" content="Softnio">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
-    <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="{% static '/admin/images/favicon.png' %}">
     <!-- Page Title  -->
-    <title>Dashboard | LMS | DashLite Admin Template</title>
+    <title>Dashboard</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{% static '/admin/assets/css/dashlite.css'%}">
     <link id="skin-default" rel="stylesheet" href="{% static '/admin/assets/css/theme.css'%}">
@@ -25,7 +21,7 @@
             <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
-                        <a href="../admin" class="logo-link nk-sidebar-logo">
+                        <a href="/admin/" class="logo-link nk-sidebar-logo">
                             <img class="logo-light logo-img" src="{% static '/admin/images/logo.png' %}" srcset="{% static '/admin/images/logo2x.png' %} 2x" alt="logo">
                             <img class="logo-dark logo-img" src="{% static '/admin/images/logo-dark.png' %}" srcset="{% static '/admin/images/logo-dark2x.png' %} 2x" alt="logo-dark">
                             <img class="logo-small logo-img logo-img-small" src="{% static '/admin/images/logo-small.png' %}" srcset="{% static '/admin/images/logo-small2x.png' %} 2x" alt="logo-small">
@@ -41,7 +37,7 @@
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
                                 <li class="nk-menu-item">
-                                    <a href="lms/admin/templates/index.html" class="nk-menu-link">
+                                    <a href="/admin/" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
                                         <span class="nk-menu-text">Dashboard</span>
                                     </a>
@@ -53,10 +49,10 @@
                                     </a>
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
-                                            <a href="html/lms/category.html" class="nk-menu-link"><span class="nk-menu-text">Catagories</span></a>
+                                            <a href="/admin/category" class="nk-menu-link"><span class="nk-menu-text">Catagories</span></a>
                                         </li>
                                         <li class="nk-menu-item">
-                                            <a href="html/lms/courses.html" class="nk-menu-link"><span class="nk-menu-text">Course List</span></a>
+                                            <a href="/admin/course" class="nk-menu-link"><span class="nk-menu-text">Course List</span></a>
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
@@ -66,16 +62,16 @@
                                         <span class="nk-menu-text">Instructors</span>
                                     </a>
                                     <ul class="nk-menu-sub">
+                                        {% comment %} <li class="nk-menu-item">
+                                            <a href="/admin/instructor-dashborad" class="nk-menu-link"><span class="nk-menu-text">Instructor Overview</span></a>
+                                        </li> {% endcomment %}
                                         <li class="nk-menu-item">
-                                            <a href="html/lms/instructor-dashborad.html" class="nk-menu-link"><span class="nk-menu-text">Instructor Overview</span></a>
-                                        </li>
-                                        <li class="nk-menu-item">
-                                            <a href="html/lms/instructor-list.html" class="nk-menu-link"><span class="nk-menu-text">Instructor List</span></a>
+                                            <a href="/admin/instructor-list" class="nk-menu-link"><span class="nk-menu-text">Instructor List</span></a>
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/students.html" class="nk-menu-link">
+                                    <a href="/admin/students" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
                                         <span class="nk-menu-text">Students</span>
                                     </a>
@@ -87,15 +83,15 @@
                                     </a>
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
-                                            <a href="html/lms/enroll-history.html" class="nk-menu-link"><span class="nk-menu-text">Enroll History</span></a>
+                                            <a href="/admin/enroll-history" class="nk-menu-link"><span class="nk-menu-text">Enroll History</span></a>
                                         </li>
                                         <li class="nk-menu-item">
-                                            <a href="html/lms/enroll-student.html" class="nk-menu-link"><span class="nk-menu-text">Enroll a Student</span></a>
+                                            <a href="/admin/enroll-students" class="nk-menu-link"><span class="nk-menu-text">Enroll a Student</span></a>
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                                    <a href="/admin/admin-profile" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-account-setting-fill"></em></span>
                                         <span class="nk-menu-text">Admin profile</span>
                                     </a>
@@ -107,12 +103,12 @@
                                     </a>
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
-                                            <a href="html/lms/student-invoice-list.html" class="nk-menu-link"><span class="nk-menu-text">Invoice List</span></a>
+                                            <a href="/admin/student-invoice-list" class="nk-menu-link"><span class="nk-menu-text">Invoice List</span></a>
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/settings.html" class="nk-menu-link">
+                                    <a href="/admin/setting" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-setting-alt-fill"></em></span>
                                         <span class="nk-menu-text">Settings</span>
                                     </a>
@@ -134,7 +130,7 @@
                                 <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                             </div>
                             <div class="nk-header-brand d-xl-none">
-                                <a href="html/index.html" class="logo-link">
+                                <a href="html/index" class="logo-link">
                                     <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
                                     <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
                                 </a>
@@ -154,7 +150,7 @@
                                                 </div>
                                                 <div class="user-info d-none d-xl-block">
                                                     <div class="user-status user-status-active">Administator</div>
-                                                    <div class="user-name dropdown-indicator">Abu Bin Ishityak</div>
+                                                    <div class="user-name dropdown-indicator">Parth Banker</div>
                                                 </div>
                                             </div>
                                         </a>
@@ -162,18 +158,18 @@
                                             <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                                                 <div class="user-card">
                                                     <div class="user-avatar">
-                                                        <span>AB</span>
+                                                        <span>PB</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                                        <span class="sub-text">info@softnio.com</span>
+                                                        <span class="lead-text">Parth Banker</span>
+                                                        <span class="sub-text">info@nixfinity.tech</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="html/lms/admin-profile.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
-                                                    <li><a href="html/lms/admin-profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a>
+                                                    <li><a href="/admin/admin-profile"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
+                                                    <li><a href="/admin/admin-profile-settings"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a>
                                                     </li>   
                                                     <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
                                                 </ul>
