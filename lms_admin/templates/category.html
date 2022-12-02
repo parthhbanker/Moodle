@@ -30,14 +30,16 @@
                                 </div><!-- .nk-block-head -->
                                 <div class="nk-block">
                                     <div class="row g-gs">
+                                        
+                                        {% for i in data %}
                                         <div class="col-sm-6 col-lg-4 col-xxl-3">
                                             <div class="card h-100">
                                                 <div class="card-inner">
                                                     <div class="d-flex justify-content-between align-items-start mb-3">
-                                                        <a href="html/lms/courses.html" class="d-flex align-items-center">
+                                                        <a href="" class="d-flex align-items-center">
                                                             <div class="user-avatar sq bg-purple"><span>GD</span></div>
                                                             <div class="ms-3">
-                                                                <h6 class="title mb-1">Graphics Design</h6>
+                                                                <h6 class="title mb-1">{{i.cat_name}}</h6>
                                                             </div>
                                                         </a>
                                                         <div class="dropdown">
@@ -50,10 +52,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <p>Website Design & Develop the website with web applications</p>
+                                                    <p>{{i.cat_desc}}</p>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endfor %}
+                                            
                                     </div>
                                 </div><!-- .nk-block -->
                             </div>
@@ -70,17 +74,18 @@
                 <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close"> <em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-md">
                     <h5 class="title">Add Category</h5>
-                    <form action="#" class="pt-2">
+                    <form action="/addCategory" method="post" class="pt-2">
+                        {% csrf_token %}
                         <div class="form-group">
                             <label class="form-label" for="full-name">Category Name</label>
                             <div class="form-control-wrap">
-                                <input type="text" class="form-control" id="full-name" placeholder="e.g. Web Development">
+                                <input type="text" class="form-control" id="full-name" name="category_name" placeholder="e.g. Web Development">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="description">Description</label>
+                            <label class="form-label" for="category_desc">Description</label>
                             <div class="form-control-wrap">
-                                <textarea class="form-control" name="description" id="description" placeholder="Write Category Description"></textarea>
+                                <textarea class="form-control" id="description" name="category_desc" placeholder="Write Category Description"></textarea>
                             </div>
                         </div>
                         <div class="form-group">

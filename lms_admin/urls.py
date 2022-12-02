@@ -11,6 +11,7 @@ urlpatterns = [
 
 	# course
 	path('category/', views.category, name="category"),
+	path('addCategory', views.addCategory, name="add-category"),
 	path('course/', views.course, name="course"),
 
 	# enroll

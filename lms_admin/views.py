@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from lms_admin.models import *
+
 
 # Create your s here.
 def default(request):
@@ -11,7 +13,23 @@ def default(request):
 # course pages
 ###
 def category(request):
-    return render(request, "category.html")
+    data = CategoryModel.objects.all()
+    print(data[1].cat_name)
+    return render(request, "category.html", {"data":data})
+
+def addCategory(request):
+    if request.method == 'POST':
+        cat_name = request.POST['category_name']
+        desc = request.POST['category_desc']
+
+        obj = CategoryModel()
+        obj.cat_name = cat_name
+        obj.cat_desc = desc
+
+        obj.save()
+    
+    return category(request)
+    
 
 def course(request):
     return render(request, "courses.html")

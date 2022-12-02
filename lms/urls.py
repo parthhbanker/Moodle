@@ -3,7 +3,8 @@ from django.urls import path, include
 
 urlpatterns = [
 
+    path('def_admin/',  admin.site.urls),
     # default admin page
-    path('admin/', include('admin.urls')),
-    path('', include('admin.urls'))
+    path('admin/', include('lms_admin.urls')),
+    path('', include('lms_admin.urls'))
 ]
