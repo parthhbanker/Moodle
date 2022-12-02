@@ -6,6 +6,32 @@ class CategoryModel(models.Model):
     cat_name = models.CharField(max_length=255)
     cat_desc = models.TextField()
 
+class CourseModel(models.Model):
+    course_id = models.AutoField
+    course_name = models.CharField(max_length=255)
+    course_category = models.CharField(max_length=255)
+    course_difficulty = models.CharField(max_length=255)
+    total_lesson = models.IntegerField()
+    course_desc = models.TextField()
+
+class AdminModel(models.Model):
+    id = models.AutoField
+    name = models.CharField(max_length=255)
+    display_name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    phone = models.CharField(max_length=255)
+    dob = models.CharField(max_length=255)
+
+class WebSettingModel(models.Model):
+    id = models.AutoField
+    store_name = models.CharField(max_length = 255)
+    site_email = models.CharField(max_length=255)
+    site_copyright = models.CharField(max_length = 255)
+    allow_registration = models.IntegerField()
+    main_website = models.CharField(max_length=255)
+    website_desc = models.TextField()
+    maintanance_mode = models.IntegerField()
+
 
 # class AddInstructorModel(models.Model):
 #     ins_id = models.AutoField

@@ -1,4 +1,5 @@
 {% include "header.html" %}
+
                 <div class="nk-content ">
                     <div class="container-fluid">
                         <div class="nk-content-inner">
@@ -25,6 +26,9 @@
                                                         </div>
                                                     </div>
                                                 </div><!-- .nk-block-head -->
+                                                
+                                                {% for i in data %}
+                                                    
                                                 <div class="nk-block">
                                                     <div class="nk-data data-list">
                                                         <div class="data-head">
@@ -33,38 +37,40 @@
                                                         <div class="data-item">
                                                             <div class="data-col">
                                                                 <span class="data-label">Full Name</span>
-                                                                <span class="data-value">Abu Bin Ishtiyak</span>
+                                                                <span class="data-value">{{i.name}}</span>
                                                             </div>
                                                         </div><!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
                                                                 <span class="data-label">Display Name</span>
-                                                                <span class="data-value">Ishtiyak</span>
+                                                                <span class="data-value">{{i.display_name}}</span>
                                                             </div>
                                                         </div><!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
                                                                 <span class="data-label">Email</span>
-                                                                <span class="data-value">info@softnio.com</span>
+                                                                <span class="data-value">{{i.email}}</span>
                                                             </div>
                                                         </div><!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
                                                                 <span class="data-label">Phone Number</span>
-                                                                <span class="data-value text-soft">Not add yet</span>
+                                                                <span class="data-value text-soft">{{i.phone}}</span>
                                                             </div>
                                                         </div><!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
                                                                 <span class="data-label">Date of Birth</span>
-                                                                <span class="data-value">29 Feb, 1986</span>
+                                                                <span class="data-value">{{i.dob}}</span>
                                                             </div>
                                                         </div><!-- data-item -->
                                                     </div><!-- data-list -->
                                                     
                                                 </div><!-- .nk-block -->
+
+                                                {% endfor %}
                                             </div>
-                                            {% include 'admin_inner_sidebar.html' %}
+                                            {% comment %} {% include 'admin_inner_sidebar.html' %} {% endcomment %}
                                         </div><!-- .card-aside-wrap -->
                                     </div><!-- .card -->
                                 </div><!-- .nk-block -->

@@ -39,31 +39,29 @@
                                                             <th class="nk-tb-col tb-col-lg"><span class="sub-text">Category</span></th>
                                                             <th class="nk-tb-col tb-col-lg"><span class="sub-text">Instructor</span></th>
                                                             <th class="nk-tb-col tb-col-lg"><span class="sub-text">Lesson</span></th>
-                                                            <th class="nk-tb-col tb-col-lg"><span class="sub-text">Enrolled Student</span></th>
                                                             <th class="nk-tb-col tb-col-lg"><span class="sub-text"></span></th>
                                                         </tr><!-- .nk-tb-item -->
                                                     </thead>
                                                     <tbody>
+                                                        
+                                                        {% for i in data %}
                                                         <tr class="nk-tb-item">
                                                             <td class="nk-tb-col">
                                                                 <a href="#" class="project-title">
                                                                     <div class="user-avatar sq bg-purple"><span>RD</span></div>
                                                                     <div class="project-info">
-                                                                        <h6 class="title">Responsive Design</h6>
+                                                                        <h6 class="title">{{i.course_name}}</h6>
                                                                     </div>
                                                                 </a>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-lg">
-                                                                <span>Web Development</span>
+                                                                <span>{{i.course_category}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-lg">
                                                                 <span>Alex Ashley</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-lg">
-                                                                <span>Total lesson: 32</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Total enrolment: 25</span>
+                                                                <span>Total lesson: {{i.total_lesson}}</span>
                                                             </td>
                                                             <td class="nk-tb-col nk-tb-col-tools">
                                                                 <ul class="nk-tb-actions gx-1">
@@ -81,6 +79,8 @@
                                                                 </ul>
                                                             </td>
                                                         </tr><!-- .nk-tb-item -->
+                                                        {% endfor %}
+                                                            
                                                     </tbody>
                                                 </table><!-- .nk-tb-list -->
                                             </div>
@@ -100,13 +100,14 @@
                 <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close"> <em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-md">
                     <h5 class="modal-title">Create Course</h5>
-                    <form action="#" class="pt-2">
+                    <form action="/addCourse" method="POST" class="pt-2">
+                        {% csrf_token %}
                         <div class="row gy-3 gx-gs">
                             <div class="col-12">
                                 <div class="form-group">
                                     <label class="form-label" for="course-name">Course Name</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="course-name" placeholder="e.g. Responsive Design">
+                                        <input type="text" class="form-control" id="course-name" name="course_name" placeholder="e.g. Responsive Design">
                                     </div>
                                 </div><!-- .form-group -->
                             </div>
@@ -114,10 +115,10 @@
                                 <div class="form-group">
                                     <label class="form-label" for="course-category">Course category</label>
                                     <div class="form-control-wrap">
-                                        <select class="form-select js-select2" id="course-category">
-                                            <option>Web Development</option>
-                                            <option>Mobile Application</option>
-                                            <option>Graphics Design</option>
+                                        <select class="form-select js-select2" id="course-category" name="course_category">
+                                            {% for i in data1 %}
+                                        <option>{{i.cat_name}}</option>
+                                        {% endfor %}
                                         </select>
                                     </div>
                                 </div><!-- .form-group -->
@@ -125,7 +126,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label class="form-label" for="dificulties">Course Dificulties</label>
-                                    <select class="form-select js-select2" id="dificulties">
+                                    <select class="form-select js-select2" id="dificulties" name="course_difficulty">
                                         <option>Beginners</option>
                                         <option>Intermediate</option>
                                         <option>Advanced</option>
@@ -136,26 +137,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="course-lesson">Total Lesson</label>
                                     <div class="form-control-wrap">
-                                        <input type="number" class="form-control" id="course-lesson" placeholder="40">
-                                    </div>
-                                </div><!-- .form-group -->
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="thumb">Course thumbnail</label>
-                                    <div class="form-control-wrap">
-                                        <div class="form-file">
-                                            <input type="file" multiple class="form-file-input" id="customFile-create">
-                                            <label class="form-file-label" for="customFile-create">Choose file</label>
-                                        </div>
-                                    </div>
-                                </div><!-- .form-group -->
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label class="form-label" for="thumb">Course Description</label>
-                                    <div class="form-control-wrap">
-                                        <div class="quill-minimal"></div>
+                                        <input type="number" class="form-control" id="course-lesson" name="total_lesson" placeholder="40">
                                     </div>
                                 </div><!-- .form-group -->
                             </div>
@@ -191,9 +173,11 @@
                                 <div class="form-group">
                                     <label class="form-label" for="edit-category">Course category</label>
                                     <select class="form-select js-select2" id="edit-category">
-                                        <option>Web Development</option>
-                                        <option>Mobile Application</option>
-                                        <option>Graphics Design</option>
+                                        
+                                        {% for i in data %}
+                                            <option value={{i.cat_id}}>{{i.cat_name}}</option>
+                                        {% endfor %}
+                                            
                                     </select>
                                 </div>
                             </div>
@@ -214,25 +198,6 @@
                                         <input type="number" class="form-control" id="edit-lesson" value="40">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="thumb">Course thumbnail</label>
-                                    <div class="form-control-wrap">
-                                        <div class="form-file">
-                                            <input type="file" multiple class="form-file-input" id="edit-customFile">
-                                            <label class="form-file-label" for="edit-customFile">Choose file</label>
-                                        </div>
-                                    </div>
-                                </div><!-- .form-group -->
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label class="form-label" for="edit-description">Course Description</label>
-                                    <div class="form-control-wrap">
-                                        <div class="quill-minimal"></div>
-                                    </div>
-                                </div><!-- .form-group -->
                             </div>
                             <div class="col-12">
                                 <div class="form-group">

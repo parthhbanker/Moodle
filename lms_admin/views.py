@@ -30,9 +30,35 @@ def addCategory(request):
     
     return category(request)
     
+    
 
 def course(request):
-    return render(request, "courses.html")
+    data = CourseModel.objects.all()
+    data1 = CategoryModel.objects.all()
+    return render(request, "courses.html" , {"data":data, "data1": data1})
+
+def addCourse(request):
+    if request.method == "POST":
+        course_name = request.POST['course_name']
+        course_category = request.POST['course_category']
+        course_difficulty = request.POST['course_difficulty']
+        total_lesson = request.POST['total_lesson']
+        # course_desc = request.POST['course_desc']
+
+        print("===================")
+        print(total_lesson)
+        print("===================")
+
+        obj = CourseModel()
+        obj.course_name = course_name
+        obj.course_category = course_category
+        obj.course_difficulty = course_difficulty
+        obj.total_lesson = total_lesson
+        obj.coucourse_desc = ""
+
+        obj.save()
+
+    return course(request)
 
 ### 
 # instructor pages 
@@ -51,7 +77,10 @@ def adminProfileSetting(request):
     return render(request, "admin-profile-setting.html")
 
 def adminProfile(request):
-    return render(request, "admin-profile.html")
+    data = AdminModel.objects.all() 
+    print(data[0].name)
+    return render(request, "admin-profile.html", {"data":data})
+    # return render(request, "admin-profile.html", {"data":data})
 
 ###
 # enroll pages
@@ -67,7 +96,8 @@ def enrollStudent(request):
 # settting pages 
 ###
 def setting(request):
-    return render(request, "settings.html")
+    data = WebSettingModel.objects.all() 
+    return render(request, "settings.html", {"data":data})\
 
 ###
 # Student pages 
