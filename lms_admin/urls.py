@@ -18,9 +18,11 @@ urlpatterns = [
 	# enroll
 	path('enroll-history/', views.enrollHistory, name="enroll-history"),
 	path('enroll-students/', views.enrollStudent, name="enroll-students"),
+	path('enroll', views.enroll, name="enroll"),
 
 	# instructor
 	path('instructor-list/', views.instructorList, name="instructor-list"),
+	path('addinstructor', views.addInstructor, name="add-instructor"),
 	path('instructor-details/', views.instructorDetail, name="instructor-details"),
 
 	# setting

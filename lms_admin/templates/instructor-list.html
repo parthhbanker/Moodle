@@ -40,10 +40,11 @@
                                                         <div class="nk-tb-col"><span class="sub-text">Instructor</span></div>
                                                         <div class="nk-tb-col tb-col-md"><span class="sub-text">Phone</span></div>
                                                         <div class="nk-tb-col tb-col-lg"><span class="sub-text">Description</span></div>
-                                                        <div class="nk-tb-col tb-col-mb"><span class="sub-text"></span>Active courses</div>
                                                         <div class="nk-tb-col nk-tb-col-tools">
                                                         </div>
                                                     </div><!-- .nk-tb-item -->
+                                                    
+                                                    {% for i in data %}
                                                     <div class="nk-tb-item">
                                                         <div class="nk-tb-col">
                                                             <a href="/instructor-details">
@@ -52,22 +53,19 @@
                                                                         <span>AB</span>
                                                                     </div>
                                                                     <div class="user-info">
-                                                                        <span class="tb-lead">Abu Bin Ishtiyak <span class="dot dot-success d-md-none ms-1"></span></span>
-                                                                        <span>info@softnio.com</span>
+                                                                        <span class="tb-lead">{{i.ins_fname}} {{i.ins_lname}}<span class="dot dot-success d-md-none ms-1"></span></span>
+                                                                        <span>{{i.ins_email}}</span>
                                                                     </div>
                                                                 </div>
                                                             </a>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
-                                                            <span>+811 758-756433</span>
+                                                            <span>{{i.ins_phone}}</span>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-lg">
-                                                            <span>Lorem ipsum dolor sit amet.</span>
+                                                            <span>{{i.ins_desc}}</span>
                                                         </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span>12 active courses</span>
-                                                        </div>
-                                                        <div class="nk-tb-col nk-tb-col-tools">
+                                                        {% comment %} <div class="nk-tb-col nk-tb-col-tools">
                                                             <ul class="nk-tb-actions gx-1">
                                                                 <li>
                                                                     <div class="drodown">
@@ -80,8 +78,10 @@
                                                                     </div>
                                                                 </li>
                                                             </ul>
-                                                        </div>
+                                                        </div> {% endcomment %}
                                                     </div><!-- .nk-tb-item -->
+                                                    {% endfor %}
+                                                        
                                                 </div><!-- .nk-tb-list -->
                                             </div>
                                         </div>
@@ -102,43 +102,42 @@
                 <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-md">
                     <h5 class="title">Add Instructor</h5>
-                    <form action="#" class="pt-2">
+                    <form action="/addinstructor" class="pt-2" method="POST">
+                        {% csrf_token %}
                         <div class="row gy-4">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" for="first-name">First Name</label>
-                                    <input type="text" class="form-control" id="first-name" placeholder="First name">
+                                    <input type="text" class="form-control" name="fname" id="first-name" placeholder="First name">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" for="last-name">Last Name</label>
-                                    <input type="text" class="form-control" id="last-name" placeholder="Last name">
+                                    <input type="text" class="form-control" name="lname" id="last-name" placeholder="Last name">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" for="email">Email Address</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Email Address">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email Address">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" for="phone-no">Phone Number</label>
-                                    <input type="text" class="form-control" id="phone-no" value="+880" placeholder="Phone Number">
+                                    <input type="text" class="form-control" name="phone" id="phone-no" value="+91" placeholder="Phone Number">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="form-label" for="about-instractor">About Instractor</label>
-                                    <textarea class="form-control textarea-sm" id="about-instractor" placeholder="Discribe a little bit"></textarea>
+                                    <label class="form-label" for="about-instractor">About Instructor</label>
+                                    <textarea class="form-control textarea-sm" name="description" id="about-instractor" placeholder="Discribe a little bit"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                    <li>
-                                        <a href="#" class="btn btn-primary">Add Instructor</a>
-                                    </li>
+                                    <button data-bs-dismiss="modal" type="submit" class="btn btn-primary">Add Instructor</button>
                                     <li>
                                         <a href="#" data-bs-dismiss="modal" class="link link-light">Cancel</a>
                                     </li>

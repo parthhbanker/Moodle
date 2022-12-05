@@ -13,13 +13,15 @@
                                 <!--.nk-block-head -->
                                 <div class="nk-block">
                                     <div class="card">
+                                    <form method="POST" action="/enroll" >
+                                        {% csrf_token %}
                                         <div class="card-inner">
                                             <div class="row gy-4">
-                                                <div class="col-md-3">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Select an user</label>
                                                         <div class="form-control-wrap">
-                                                            <select class="form-select js-select2" data-search="on">
+                                                            <select class="form-select js-select2" data-search="on" name="student">
                                                                 <option value="default_option">Abu Bin Ishtiyak</option>
                                                                 <option value="option_select_name">Frances Burns</option>
                                                                 <option value="option_select_name">Patrick Newman</option>
@@ -29,95 +31,39 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Course to enrol</label>
                                                         <div class="form-control-wrap">
-                                                            <select class="form-select js-select2" data-placeholder="Select multiple options">
-                                                                <option value="default_option">UI/UX Design with Adobe XD</option>
-                                                                <option value="option_select_name">Front-end Web Development with React</option>
-                                                                <option value="option_select_name">Learn Android Development with project</option>
-                                                                <option value="option_select_name">Learn PHP Basic to Advance</option>
-                                                                <option value="option_select_name">Learn Android Development with project</option>
+                                                            <select class="form-select js-select2" data-placeholder="Select multiple options" name="course">
+                                                                <option value="default_option" disabled>Select</option>
+                                                                
+                                                                {% for i in course %}
+                                                                <option value={{i.course_name}}>{{i.course_name}}</option>
+                                                                {% endfor %}
+                                                                    
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!--col-->
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label class="form-label">Country</label>
-                                                        <div class="form-control-wrap">
-                                                            <select class="form-select js-select2" data-placeholder="Select multiple options">
-                                                                <option value="default_option">United State</option>
-                                                                <option value="option_select_name"> United Kindom</option>
-                                                                <option value="option_select_name">India</option>
-                                                                <option value="option_select_name">Canada</option>
-                                                                <option value="option_select_name"> Australia</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!--col-->
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label class="form-label">State</label>
-                                                        <div class="form-control-wrap">
-                                                            <select class="form-select js-select2" data-placeholder="Select multiple options">
-                                                                <option value="default_option">United State</option>
-                                                                <option value="option_select_name"> United Kindom</option>
-                                                                <option value="option_select_name">India</option>
-                                                                <option value="option_select_name">Canada</option>
-                                                                <option value="option_select_name"> Australia</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!--col-->
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label class="form-label">Payment Method</label>
-                                                        <div class="form-control-wrap">
-                                                            <select class="form-select js-select2" data-placeholder="Select multiple options">
-                                                                <option value="default_option">Card</option>
-                                                                <option value="option_select_name">Bitcoin</option>
-                                                                <option value="option_select_name">Cash</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!--col-->
-                                                <div class="col-md-3">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label" for="phone-no">Phone</label>
-                                                        <input type="email" class="form-control" id="phone-no" placeholder="Phone no">
+                                                        <input type="text" class="form-control" name="phone" id="phone-no" placeholder="Phone no">
                                                     </div>
                                                 </div>
                                                 <!--col-->
-                                                <div class="col-md-3">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label" for="email">Email Address</label>
-                                                        <input type="email" class="form-control" id="email" placeholder="Email Address">
-                                                    </div>
-                                                </div>
-                                                <!--col-->
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="address">Current address</label>
-                                                        <input type="email" class="form-control" id="address" placeholder="Current address">
-                                                    </div>
-                                                </div>
-                                                <!--col-->
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="student-id">Student Id</label>
-                                                        <input type="email" class="form-control" id="student-id" placeholder="Student Id">
+                                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email Address">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <ul class="preview-list ">
                                                         <li class="preview-item">
-                                                            <button type="button" class="btn btn-primary">Enroll Student</button>
+                                                            <button type="submit" class="btn btn-primary">Enroll Student</button>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -126,6 +72,7 @@
                                             <!--row-->
                                         </div>
                                         <!--card inner-->
+                                    </form>
                                     </div>
                                     <!--card-->
                                 </div>

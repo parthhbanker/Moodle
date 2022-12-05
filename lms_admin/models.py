@@ -33,13 +33,13 @@ class WebSettingModel(models.Model):
     maintanance_mode = models.IntegerField()
 
 
-# class AddInstructorModel(models.Model):
-#     ins_id = models.AutoField
-#     ins_fname = models.CharField(max_length=255)
-#     ins_lname = models.CharField(max_length=255)
-#     ins_email = models.EmailField(max_length=255)
-#     ins_phone = models.CharField(max_length=12)
-#     ins_desc = models.TextField()
+class InstructorModel(models.Model):
+    ins_id = models.AutoField
+    ins_fname = models.CharField(max_length=255)
+    ins_lname = models.CharField(max_length=255)
+    ins_email = models.EmailField(max_length=255)
+    ins_phone = models.CharField(max_length=20)
+    ins_desc = models.TextField()
     
 # class AddStudentModel(models.Model):
 #     stu_id = models.AutoField
@@ -48,7 +48,9 @@ class WebSettingModel(models.Model):
 #     stu_email = models.EmailField(max_length=255)
 #     stu_phone = models.CharField(max_length=12)
 
-# class EnrollStudentModel(models.Model):
-#     enr_id = models.AutoField
-#     stu_id = models.IntegerField()
-#     cid = models.IntegerField()
+class EnrollStudentModel(models.Model):
+    enr_id = models.AutoField
+    student_name = models.CharField(max_length=255)
+    course_name = models.CharField(max_length=255)
+    student_phone = models.CharField(max_length=255)
+    student_email = models.CharField(max_length=255)

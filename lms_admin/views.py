@@ -65,7 +65,27 @@ def addCourse(request):
 ###
 
 def instructorList(request):
-    return render(request, "instructor-list.html")
+    data = InstructorModel.objects.all()
+    return render(request, "instructor-list.html", {"data" : data})
+
+def addInstructor(request):
+    if request.method == 'POST':
+        fname = request.POST['fname']
+        lname = request.POST['lname']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        description = request.POST['description']
+
+        obj = InstructorModel()
+        obj.ins_fname = fname
+        obj.ins_lname = lname
+        obj.ins_email = email
+        obj.ins_phone = phone
+        obj.ins_desc = description
+
+        obj.save()
+    
+    return instructorList(request)
 
 def instructorDetail(request):
     return render(request, "instructor-details.html")
@@ -82,14 +102,37 @@ def adminProfile(request):
     return render(request, "admin-profile.html", {"data":data})
     # return render(request, "admin-profile.html", {"data":data})
 
+def updateAdminProfile(request):
+    
+    return adminProfile(request)
+
 ###
 # enroll pages
 ###
 
 def enrollHistory(request):
-    return render(request, "enroll-history.html")
+    data = EnrollStudentModel.objects.all()
+    return render(request, "enroll-history.html", {"data" : data})
 
 def enrollStudent(request):
+    course = CourseModel.objects.all()
+    return render(request, "enroll-student.html", {"course" : course})
+
+def enroll(request):
+    if request.method == 'POST':
+        student = request.POST['student']
+        course = request.POST['course']
+        email = request.POST['email']
+        phone = request.POST['phone']
+
+        obj = EnrollStudentModel()
+        obj.student_name = student
+        obj.student_email = email
+        obj.course_name = course
+        obj.student_phone = phone
+
+        obj.save()
+
     return render(request, "enroll-student.html")
 
 ###
