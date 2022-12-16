@@ -46,8 +46,7 @@
                                                             <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 me-n1" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                             <div class="dropdown-menu dropdown-menu-end">
                                                                 <ul class="link-list-opt no-bdr">
-                                                                    <li><a data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Category</span></a></li>
-                                                                    <li><a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Category</span></a></li>
+                                                                    <li><a href="/delCategory/{{i.id}}"><em class="icon ni ni-delete"></em><span>Delete Category</span></a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -105,66 +104,5 @@
             </div>
         </div>
     </div>
-    <!-- .Edit Modal-Content -->
-    <div class="modal fade" id="modalEdit">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close"> <em class="icon ni ni-cross-sm"></em></a>
-                <div class="modal-body modal-body-md">
-                    <h5 class="title">Edit Category</h5>
-                    <form action="#" class="pt-2">
-                        <div class="form-group">
-                            <label class="form-label" for="edit-full-name">Category Name</label>
-                            <div class="form-control-wrap">
-                                <input type="text" class="form-control" id="edit-full-name" value="Web Development">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="edit-description">Description</label>
-                            <div class="form-control-wrap">
-                                <textarea class="form-control" name="description" id="edit-description" value="Website Design & Develop the website with web applications"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="category-thumb">Category thumbnail</label>
-                            <div class="form-control-wrap">
-                                <div class="form-file">
-                                    <input type="file" multiple class="form-file-input" id="edit-customFile">
-                                    <label class="form-file-label" for="category-thumb">Choose file</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <button data-bs-dismiss="modal" type="submit" class="btn btn-primary">Save Informations</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- .Edit Modal-Content -->
-    <div class="modal fade" id="modalDelete">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content"> <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-                <div class="modal-body modal-body-lg text-center">
-                    <div class="nk-modal py-4"> <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger"></em>
-                        <h4 class="nk-modal-title">Are You Sure ?</h4>
-                        <div class="nk-modal-text mt-n2">
-                            <p class="text-soft">This event data will be removed permanently.</p>
-                        </div>
-                        <ul class="d-flex justify-content-center gx-4 mt-4">
-                            <li>
-                                <button data-bs-dismiss="modal" id="deleteEvent" class="btn btn-success">Yes, Delete it</button>
-                            </li>
-                            <li>
-                                <button data-bs-dismiss="modal" class="btn btn-danger btn-dim">Cancel</button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- .Delete Modal-content -->
     
 {% include "footer.html" %}

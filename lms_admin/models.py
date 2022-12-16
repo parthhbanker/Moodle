@@ -41,12 +41,13 @@ class InstructorModel(models.Model):
     ins_phone = models.CharField(max_length=20)
     ins_desc = models.TextField()
     
-# class AddStudentModel(models.Model):
-#     stu_id = models.AutoField
-#     stu_fname = models.CharField(max_length=255)
-#     stu_lname = models.CharField(max_length=255)
-#     stu_email = models.EmailField(max_length=255)
-#     stu_phone = models.CharField(max_length=12)
+class AddStudentModel(models.Model):
+    stu_id = models.AutoField
+    stu_fname = models.CharField(max_length=255)
+    stu_lname = models.CharField(max_length=255)
+    stu_email = models.EmailField(max_length=255)
+    stu_phone = models.CharField(max_length=12)
+    stu_dob = models.DateField()
 
 class EnrollStudentModel(models.Model):
     enr_id = models.AutoField

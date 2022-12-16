@@ -95,49 +95,56 @@
                     </ul><!-- .nav-tabs -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="full-name">Full Name</label>
-                                        <input type="text" class="form-control" id="full-name" value="Abu Bin Ishtiyak" placeholder="Enter Full name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="display-name">Display Name</label>
-                                        <input type="text" class="form-control" id="display-name" value="Ishtiyak" placeholder="Enter display name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="personal-email">Email</label>
-                                        <input type="email" class="form-control" id="personal-email" value="info@softnio.com">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Phone Number</label>
-                                        <input type="text" class="form-control" id="phone-no" value="+880" placeholder="Phone Number">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="birth-day">Date of Birth</label>
-                                        <input type="text" class="form-control date-picker" id="birth-day" placeholder="02/24/2021">
-                                    </div>
-                                </div>
+                            <form method="post" action="/update-admin-profile/">
+                                {% csrf_token %}
                                 
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <a href="#" data-bs-dismiss="modal" class="btn btn-primary">Update Profile</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
+                                {% for i in data %}
+                                <div class="row gy-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="full-name">Full Name</label>
+                                            <input type="text" class="form-control" id="full-name" name="fn" value="{{i.name}}" placeholder="Enter Full name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="display-name">Display Name</label>
+                                            <input type="text" class="form-control" id="display-name" name="dn" value="{{i.display_name}}" placeholder="Enter display name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="personal-email">Email</label>
+                                            <input type="email" class="form-control" id="personal-email" value="{{i.email}}" name="email" value="info@softnio.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="phone-no">Phone Number</label>
+                                            <input type="text" class="form-control" id="phone-no" value="{{ i.phone }}" name="phone" placeholder="Phone Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="birth-day">Date of Birth</label>
+                                            <input type="text" class="form-control date-picker" id="birth-day" value="{{i.dob}}" name="dob" placeholder="02/24/2021">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                        <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">    
+                                            <li>
+                                                <button data-bs-dismiss="modal" class="btn btn-primary" type="submit">Update Profile</button>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-bs-dismiss="modal" class="link link-light">Cancel</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
+                                {% endfor %}
+                                    
+                            </form>
                         </div><!-- .tab-pane -->
                     </div><!-- .tab-content -->
                 </div><!-- .modal-body -->

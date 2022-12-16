@@ -24,7 +24,8 @@
                                                 <div class="tab-pane active" id="tabItem5">
                                                     <h4 class="title nk-block-title">Web store setting</h4>
                                                     <p>Here is your basic store setting of your website.</p>
-                                                    <form action="#" class="gy-3 form-settings">
+                                                    <form action="/update-setting" class="gy-3 form-settings" method="post">
+                                                        {% csrf_token %}
                                                         <div class="row g-3 align-center">
                                                             <div class="col-lg-5">
                                                                 <div class="form-group">
@@ -35,7 +36,7 @@
                                                             <div class="col-lg-7">
                                                                 <div class="form-group">
                                                                     <div class="form-control-wrap">
-                                                                        <input type="text" class="form-control" id="site-name" value={{i.store_name}}>
+                                                                        <input type="text" class="form-control" name='site-name' id="site-name" value={{i.store_name}}>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -50,7 +51,7 @@
                                                             <div class="col-lg-7">
                                                                 <div class="form-group">
                                                                     <div class="form-control-wrap">
-                                                                        <input type="text" class="form-control" id="site-email" value={{i.site_email}}>
+                                                                        <input type="text" class="form-control" id="site-email" name="site-email" value={{i.site_email}}>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -65,42 +66,9 @@
                                                             <div class="col-lg-7">
                                                                 <div class="form-group">
                                                                     <div class="form-control-wrap">
-                                                                        <input type="text" class="form-control" id="site-copyright" value={{i.site_copyright}}>
+                                                                        <input type="text" class="form-control" id="site-copyright" name="site-copyright" value={{i.site_copyright}}>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row g-3 align-center">
-                                                            <div class="col-lg-5">
-                                                                <div class="form-group">
-                                                                    <label class="form-label">Allow Registration</label>
-                                                                    <span class="form-note">Enable or disable registration from site.</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-7">
-                                                                <ul class="custom-control-group g-3 align-center flex-wrap">
-                                                                    
-                                                                    
-                                                                        
-                                                                    <li>
-                                                                        <div class="custom-control custom-radio">
-                                                                            <input type="radio" class="custom-control-input" checked name="reg-public" id="reg-enable">
-                                                                            <label class="custom-control-label" for="reg-enable">Enable</label>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li>
-                                                                        <div class="custom-control custom-radio">
-                                                                            <input type="radio" class="custom-control-input" name="reg-public" id="reg-disable">
-                                                                            <label class="custom-control-label" for="reg-disable">Disable</label>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li>
-                                                                        <div class="custom-control custom-radio">
-                                                                            <input type="radio" class="custom-control-input" name="reg-public" id="reg-request">
-                                                                            <label class="custom-control-label" for="reg-request">On Request</label>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
                                                             </div>
                                                         </div>
                                                         <div class="row g-3 align-center">
@@ -134,33 +102,6 @@
 
                                                       </textarea>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row g-3 align-center">
-                                                            <div class="col-lg-5">
-                                                                <div class="form-group">
-                                                                    <label class="form-label" for="site-off">Maintanance Mode</label>
-                                                                    <span class="form-note">Enable to make website make offline.</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-7">
-                                                                <div class="form-group">
-                                                                    <div class="custom-control custom-switch">
-                                                                        
-                                                                        {% if i.maintanance_mode == 0 %}
-                                                                            <input type="checkbox" class="custom-control-input" name="reg-public" id="site-off">
-                                                                            
-                                                                        {% else %}
-                                                                            <input type="checkbox" class="custom-control-input" name="reg-public" id="site-off" selected>
-                                                                            
-                                                                        {% endif %}
-
-                                                                        <label class="custom-control-label" for="site-off">Offline</label>
-
-                                                                            
-                                                                            
                                                                     </div>
                                                                 </div>
                                                             </div>

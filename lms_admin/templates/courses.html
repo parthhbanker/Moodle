@@ -70,8 +70,7 @@
                                                                             <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                             <div class="dropdown-menu dropdown-menu-end">
                                                                                 <ul class="link-list-opt no-bdr">
-                                                                                    <li><a data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Course</span></a></li>
-                                                                                    <li><a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Course</span></a></li>
+                                                                                    <li><a href="/delCourse/{{i.id}}"><em class="icon ni ni-delete"></em><span>Delete Course</span></a></li>
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
@@ -152,88 +151,5 @@
             </div>
         </div>
     </div>
-    <!-- .Create Modal-Content -->
-    <div class="modal fade" id="modalEdit">
-        <div class="modal-dialog modal-md" role="document">
-            <div class="modal-content">
-                <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close"> <em class="icon ni ni-cross-sm"></em></a>
-                <div class="modal-body modal-body-md">
-                    <h5 class="title">Edit Course</h5>
-                    <form action="#" class="pt-2">
-                        <div class="row gy-3 gx-gs">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label class="form-label" for="edit-course-name">Course Name</label>
-                                    <div class="form-control-wrap">
-                                        <input type="text" class="form-control" id="edit-course-name" value="Responsive Design">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="edit-category">Course category</label>
-                                    <select class="form-select js-select2" id="edit-category">
-                                        
-                                        {% for i in data %}
-                                            <option value={{i.cat_id}}>{{i.cat_name}}</option>
-                                        {% endfor %}
-                                            
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="edit-dificulties">Course Dificulties</label>
-                                    <select class="form-select js-select2" id="edit-dificulties">
-                                        <option>Beginners</option>
-                                        <option>Intermediate</option>
-                                        <option>Advanced</option>
-                                    </select>
-                                </div><!-- .form-group -->
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label class="form-label" for="edit-lesson">Total Lesson</label>
-                                    <div class="form-control-wrap">
-                                        <input type="number" class="form-control" id="edit-lesson" value="40">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <button data-bs-dismiss="modal" type="submit" class="btn btn-primary">Update Information</button>
-                                </div><!-- .form-group -->
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- .Edit Modal-Content -->
-    <div class="modal fade" id="modalDelete">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content"> <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-                <div class="modal-body modal-body-lg text-center">
-                    <div class="nk-modal py-4"> <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger"></em>
-                        <h4 class="nk-modal-title">Are You Sure ?</h4>
-                        <div class="nk-modal-text mt-n2">
-                            <p class="text-soft">This event data will be removed permanently.</p>
-                        </div>
-                        <ul class="d-flex justify-content-center gx-4 mt-4">
-                            <li>
-                                <button data-bs-dismiss="modal" id="deleteEvent" class="btn btn-success">Yes, Delete it</button>
-                            </li>
-                            <li>
-                                <button data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#editEventPopup" class="btn btn-danger btn-dim">Cancel</button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- .Delete Modal-content -->
-    <!-- JavaScript -->
     
     {% include "footer.html" %}

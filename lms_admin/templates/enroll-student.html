@@ -22,11 +22,11 @@
                                                         <label class="form-label">Select an user</label>
                                                         <div class="form-control-wrap">
                                                             <select class="form-select js-select2" data-search="on" name="student">
-                                                                <option value="default_option">Abu Bin Ishtiyak</option>
-                                                                <option value="option_select_name">Frances Burns</option>
-                                                                <option value="option_select_name">Patrick Newman</option>
-                                                                <option value="option_select_name">Jane Harris</option>
-                                                                <option value="option_select_name">Victoria Lynch</option>
+                                                                <option value="default_option" disabled selected>Select</option>
+                                                                
+                                                                {% for i in student %}
+                                                                    <option value="{{i.stu_fname}} {{i.stu_lname}}">{{i.stu_fname}} {{i.ltu_fname}}</option>
+                                                                {% endfor %}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -36,7 +36,7 @@
                                                         <label class="form-label">Course to enrol</label>
                                                         <div class="form-control-wrap">
                                                             <select class="form-select js-select2" data-placeholder="Select multiple options" name="course">
-                                                                <option value="default_option" disabled>Select</option>
+                                                                <option value="default_option" disabled selected>Select</option>
                                                                 
                                                                 {% for i in course %}
                                                                 <option value={{i.course_name}}>{{i.course_name}}</option>

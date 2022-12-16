@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
@@ -14,7 +15,7 @@ def default(request):
 ###
 def category(request):
     data = CategoryModel.objects.all()
-    print(data[1].cat_name)
+
     return render(request, "category.html", {"data":data})
 
 def addCategory(request):
@@ -28,7 +29,12 @@ def addCategory(request):
 
         obj.save()
     
-    return category(request)
+    return HttpResponseRedirect(reverse("category"))
+
+def deleteCategory(request, id):
+    data = CategoryModel.objects.get(id=id)
+    data.delete()
+    return HttpResponseRedirect(reverse("category"))
     
     
 
@@ -45,10 +51,6 @@ def addCourse(request):
         total_lesson = request.POST['total_lesson']
         # course_desc = request.POST['course_desc']
 
-        print("===================")
-        print(total_lesson)
-        print("===================")
-
         obj = CourseModel()
         obj.course_name = course_name
         obj.course_category = course_category
@@ -58,7 +60,12 @@ def addCourse(request):
 
         obj.save()
 
-    return course(request)
+    return HttpResponseRedirect(reverse("course"))
+
+def deleteCourse(request, id):
+    data = CourseModel.objects.get(id=id)
+    data.delete()
+    return HttpResponseRedirect(reverse("course"))
 
 ### 
 # instructor pages 
@@ -85,10 +92,16 @@ def addInstructor(request):
 
         obj.save()
     
-    return instructorList(request)
+    return HttpResponseRedirect(reverse("instructor-list"))
+
 
 def instructorDetail(request):
     return render(request, "instructor-details.html")
+
+def deleteInstructor(request, id):
+    data = InstructorModel.objects.get(id=id)
+    data.delete()
+    return HttpResponseRedirect(reverse("instructor-list"))
 
 ###
 # admin pages
@@ -97,14 +110,21 @@ def adminProfileSetting(request):
     return render(request, "admin-profile-setting.html")
 
 def adminProfile(request):
-    data = AdminModel.objects.all() 
-    print(data[0].name)
+    data = AdminModel.objects.all()
     return render(request, "admin-profile.html", {"data":data})
     # return render(request, "admin-profile.html", {"data":data})
 
 def updateAdminProfile(request):
-    
-    return adminProfile(request)
+    obj = AdminModel.objects.get(id=1)
+    obj.name = request.POST['fn']
+    obj.display_name = request.POST['dn']
+    obj.email = request.POST['email']
+    obj.phone = request.POST['phone']
+    obj.dob = request.POST['dob']
+
+    obj.save()
+
+    return HttpResponseRedirect(reverse('admin-profile'))
 
 ###
 # enroll pages
@@ -116,7 +136,8 @@ def enrollHistory(request):
 
 def enrollStudent(request):
     course = CourseModel.objects.all()
-    return render(request, "enroll-student.html", {"course" : course})
+    student = AddStudentModel.objects.all()
+    return render(request, "enroll-student.html", {"course" : course, "student" : student})
 
 def enroll(request):
     if request.method == 'POST':
@@ -140,7 +161,19 @@ def enroll(request):
 ###
 def setting(request):
     data = WebSettingModel.objects.all() 
-    return render(request, "settings.html", {"data":data})\
+    return render(request, "settings.html", {"data":data})
+
+def updateSetting(request):
+    data = WebSettingModel.objects.get(id=1)
+    data.store_name = request.POST['site-name']
+    data.store_email = request.POST['site-email']
+    data.site_copyright = request.POST['site-copyright']
+    data.main_website = request.POST['site-url']
+    data.website_desc = request.POST['fv-message']
+
+    data.save()
+
+    return HttpResponseRedirect(reverse('setting'))
 
 ###
 # Student pages 
@@ -162,4 +195,31 @@ def studentDetails(request):
     return render(request, "students-details.html")
 
 def student(request):
-    return render(request, "students.html")
+    data = AddStudentModel.objects.all()
+    return render(request, "students.html", {"data":data})
+
+def addStudent(request):
+    if request.method == 'POST':
+        fname = request.POST['fn']
+        lname = request.POST['ln']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        dob_ = request.POST['dob']
+
+        dob = datetime.strptime(dob_, "%m/%d/%Y").strftime('%Y-%m-%d')
+
+        obj = AddStudentModel()
+        obj.stu_fname = fname
+        obj.stu_lname = lname
+        obj.stu_email = email
+        obj.stu_phone = phone
+        obj.stu_dob = dob
+
+        obj.save()
+
+        return HttpResponseRedirect(reverse('student'))
+
+def deleteStudent(request, id):
+    data = AddStudentModel.objects.get(id=id)
+    data.delete()
+    return HttpResponseRedirect(reverse("student"))
